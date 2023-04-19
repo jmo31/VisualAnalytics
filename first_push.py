@@ -1,3 +1,4 @@
+
 import pandas as pd
 import numpy as np
 import altair as alt
@@ -7,7 +8,7 @@ import plotly.figure_factory as ff
 import matplotlib.pyplot as plt
 df = pd.read_csv('WorldCups.csv')
 
-st.subheader("Welcome to Group 3's final project! To view our dataset, learn about our project, or any of our visualizations simply click on of the checkboxes to the left")
+
 df1 = df
 df1.index = df1['Year']
 cols = ['Winner', 'Runners-Up', 'Third', 'Fourth']
@@ -19,14 +20,14 @@ df3.index = df3['Country']
 
 if st.sidebar.checkbox('Our project'):
     st.write("Here is where we will write about our project")
-if st.sidebar.checkbox('Show dataframe'):
+elif st.sidebar.checkbox('Show dataframe'):
     st.title('World cups dataset from kaggle.com')
     st.write(df)
-if st.sidebar.checkbox('Countries finishes at the WorldCup'):
+elif st.sidebar.checkbox('Countries finishes at the WorldCup'):
     option = st.multiselect('What finishes do you want to display?', cols, cols[0])
     st.bar_chart(df1[option])
 
-if st.sidebar.checkbox('How many total WorldCups has each country won?'):
+elif st.sidebar.checkbox('How many total WorldCups has each country won?'):
     min_year = int(df['Year'].min())
     max_year = int(df['Year'].max())
     year_range = st.slider('Select year range', min_value=min_year, max_value=max_year, value=(min_year,
@@ -37,7 +38,7 @@ if st.sidebar.checkbox('How many total WorldCups has each country won?'):
     fig.update_layout(title_text='World Cup Winners by Country', geo=dict(showframe=False, projection_type='equirectangular'))
     st.plotly_chart(fig)
 
-if st.sidebar.checkbox('Goals scored in the world cup'):
+elif st.sidebar.checkbox('Goals scored in the world cup'):
     goals_scored = df.groupby('Winner')['GoalsScored'].sum().nlargest(10)
 
     fig, ax = plt.subplots()
@@ -47,3 +48,5 @@ if st.sidebar.checkbox('Goals scored in the world cup'):
     ax.set_title('Most Goals Scored in the World Cup')
 
     st.pyplot(fig)
+else:
+    st.subheader("Welcome to team 3's final visualization, if you would like to see our dataframe, learn more about the background of our project, and see our visualizations, simply click the checkboxes to the left!")
