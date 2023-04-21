@@ -8,9 +8,10 @@ import matplotlib.pyplot as plt
 df = pd.read_csv('WorldCups.csv')
 
 
-df1 = df
+df1 = df.copy()
 df1.index = df1['Year']
 cols = ['Winner', 'Runners-Up', 'Third', 'Fourth']
+year_cols = ['Year']
 df2 = df
 df2['Number of World Cups Won'] = df2.groupby('Winner')['Winner'].transform('count')
 df2.index = df2['Winner']
