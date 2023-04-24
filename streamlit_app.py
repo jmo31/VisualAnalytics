@@ -21,7 +21,8 @@ df3 = df
 df3.index = df3['Country']
 
 if st.sidebar.checkbox('Our project'):
-    st.write("Here is where we will write about our project")
+    st.write("In our project, we wanted to try and gain insights to who might be favored to win the world cup. Using visualizations we look to gain further insights 
+             into who might be favored to win th world cup in upcoming tournaments!")
 elif st.sidebar.checkbox('Show dataframe'):
     st.title('World cups dataset from kaggle.com')
     st.write(df)
